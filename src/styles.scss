@@ -26,7 +26,7 @@
   --dark-color-dark: #000000;
 
   /* Fontes para a aplicação */
-  
+
   --font-family: "Ubuntu", sans-serif;
 
   /* Font Weights */
@@ -40,4 +40,11 @@
   --font-size-h2: 16px;
   --font-size-label: 12px;
   --font-size-text: 12px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: var(--font-family);
 }
