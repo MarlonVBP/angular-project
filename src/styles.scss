@@ -1,1 +1,43 @@
-/* You can add global styles to this file, and also import other style files */
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap");
+
+:root {
+  /* Cores principais */
+  --success-color: #2aeb9c;
+  --warning-color: #ebaf2a;
+  --danger-color: #ff4949;
+  --primary-color: #3d8bf2;
+  --light-color: #f9f9f9;
+  --dark-color: #000000;
+
+  /* Versões light das cores */
+  --success-color-light: #7fffd4;
+  --warning-color-light: #ffd67a;
+  --danger-color-light: #ff8686;
+  --primary-color-light: #6ea7f5;
+  --light-color-light: #ffffff;
+  --dark-color-light: #333333;
+
+  /* Versões dark das cores */
+  --success-color-dark: #1a7f63;
+  --warning-color-dark: #c27a1f;
+  --danger-color-dark: #cc3737;
+  --primary-color-dark: #2a5bae;
+  --light-color-dark: #e0e0e0;
+  --dark-color-dark: #000000;
+
+  /* Fontes para a aplicação */
+  
+  --font-family: "Ubuntu", sans-serif;
+
+  /* Font Weights */
+  --font-weight-light: 300;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-bold: 700;
+
+  /* Font Sizes */
+  --font-size-h1: 24px;
+  --font-size-h2: 16px;
+  --font-size-label: 12px;
+  --font-size-text: 12px;
+}
