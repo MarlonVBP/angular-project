@@ -1,1 +1,116 @@
-<p>sign-up works!</p>
+<section class="container">
+  <section class="container__form">
+    <h1>Bem-vindo</h1>
+    <img src="assets/images/logo.svg" alt="Logo marca do site" />
+    <form class="form" [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
+      <div class="input-group">
+        <div>
+          <label for="email">Email</label>
+          <input
+            type="email"
+            id="email"
+            minlength="3"
+            maxlength="100"
+            placeholder="Digite o seu email"
+            formControlName="email"
+          />
+        </div>
+        <div
+          class="error-message"
+          *ngIf="
+            signUpForm.get('email')!.invalid &&
+            (signUpForm.get('email')!.dirty || signUpForm.get('email')!.touched)
+          "
+        >
+          <span *ngIf="signUpForm.get('email')!.errors?.['required']">
+            O campo email é obrigatório.
+          </span>
+          <span *ngIf="signUpForm.get('email')!.errors?.['email']">
+            O formato do email é inválido.
+          </span>
+        </div>
+      </div>
+
+      <div class="input-group">
+        <div>
+          <label for="password">Senha</label>
+          <input
+            [type]="typeInput"
+            id="password"
+            minlength="8"
+            maxlength="50"
+            placeholder="Digite a sua senha"
+            formControlName="password"
+          />
+          <img
+            [src]="eye"
+            (click)="showPassword()"
+            alt="Icon de olho aberto ou fechado, para mostrar senha ou ocultar"
+          />
+        </div>
+        <div
+          class="error-message"
+          *ngIf="
+            signUpForm.get('password')!.invalid &&
+            (signUpForm.get('password')!.dirty ||
+              signUpForm.get('password')!.touched)
+          "
+        >
+          <!-- Mensagens de erro dinâmicas -->
+          <span *ngIf="signUpForm.get('password')!.errors?.['required']">
+            O campo senha é obrigatório.
+          </span>
+          <span *ngIf="signUpForm.get('password')!.errors?.['minlength']">
+            A senha deve ter pelo menos 8 caracteres.
+          </span>
+          <span *ngIf="signUpForm.get('password')!.errors?.['maxlength']">
+            A senha não pode ter mais de 50 caracteres.
+          </span>
+        </div>
+      </div>
+
+      <div class="input-group">
+        <div>
+          <label for="confirm-password">confirmar senha</label>
+          <input
+            [type]="typeInputConfirm"
+            id="confirm-password"
+            minlength="8"
+            maxlength="50"
+            placeholder="Digite a sua senha novamente"
+            formControlName="confirmPassword"
+          />
+          <img
+            [src]="eyeConfirm"
+            (click)="showConfirmPassword()"
+            alt="Icon de olho aberto ou fechado, para mostrar o texto do input confirmar senha ou ocultar"
+          />
+        </div>
+        <div
+          class="error-message"
+          *ngIf="
+            this.mismatch &&
+            (signUpForm.get('confirmPassword')!.dirty ||
+              signUpForm.get('confirmPassword')!.touched)
+          "
+        >
+          <!-- Mensagens de erro dinâmicas -->
+          <span> As senhas não coincidem. </span>
+        </div>
+      </div>
+
+      <!-- Botão de Envio -->
+      <div class="button-group">
+        <button type="submit" [disabled]="signUpForm.invalid">Criar conta</button>
+      </div>
+
+      <!-- Mensagem de Registro -->
+      <div class="sign-up_message">
+        <span>
+          Já tenho uma conta.
+          <span class="sign-up_link" (click)="login()">Logar</span>
+        </span>
+      </div>
+    </form>
+  </section>
+</section>
