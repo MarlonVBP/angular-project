@@ -67,7 +67,7 @@ export class LoginComponent {
           horizontalPosition: 'center',
         });
         this.authService.autorizar(data.response);
-        this.router.navigate(['/admin-home']);
+        this.router.navigate(['']);
         return;
       }
       this.snackBar.open(data.message + '.', 'Fechar', {
