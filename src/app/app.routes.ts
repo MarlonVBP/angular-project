@@ -1,11 +1,35 @@
 import { Routes } from '@angular/router';
 import { HomeComponent } from './pages/public/home/home.component';
+import { LoginComponent } from './pages/public/login/login.component';
+import { SignUpComponent } from './pages/public/sign-up/sign-up.component';
+import { PerfilComponent } from './pages/public/perfil/perfil.component';
+import { MomentosComponent } from './pages/public/momentos/momentos.component';
 
 export const routes: Routes = [
   {
     path: '',
     component: HomeComponent,
     title: 'Home page',
+  },
+  {
+    path: 'login',
+    component: LoginComponent,
+    title: 'Login page',
+  },
+  {
+    path: 'sign-up',
+    component: SignUpComponent,
+    title: 'Sign-up page',
+  },
+  {
+    path: 'perfil',
+    component: PerfilComponent,
+    title: 'Perfil page',
+  },
+  {
+    path: 'momentos',
+    component: MomentosComponent,
+    title: 'Momentos page',
   },
   {
     path: '**',
