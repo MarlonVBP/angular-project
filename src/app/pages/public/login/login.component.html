@@ -1,16 +1,85 @@
 <section class="container">
   <section class="container__form">
     <h1>Bem-vindo</h1>
-    <img src="images/logo.svg" alt="Logo marca do site">
-    <form>
+    <img src="assets/images/logo.svg" alt="Logo marca do site" />
+    <form class="form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
       <div class="input-group">
-        <label for="email">Email</label>
-        <input type="email" id="email" minlength="3" maxlength="100" placeholder="Digite o seu email">
+        <div>
+          <label for="email">Email</label>
+          <input
+            type="email"
+            id="email"
+            minlength="3"
+            maxlength="100"
+            placeholder="Digite o seu email"
+            formControlName="email"
+          />
+        </div>
+        <div
+          class="error-message"
+          *ngIf="
+            loginForm.get('email')!.invalid &&
+            (loginForm.get('email')!.dirty || loginForm.get('email')!.touched)
+          "
+        >
+          <span *ngIf="loginForm.get('email')!.errors?.['required']">
+            O campo email é obrigatório.
+          </span>
+          <span *ngIf="loginForm.get('email')!.errors?.['email']">
+            O formato do email é inválido.
+          </span>
+        </div>
       </div>
+
       <div class="input-group">
-        <label for="senha">Senha</label>
-        <input [type]="typeInput" id="senha" minlength="8" maxlength="50" placeholder="Digite a sua senha">
-        <img [src]="eye" (click)="showPassword()" alt="Icon de olho aberto, para mostrar senha">
+        <div>
+          <label for="senha">Senha</label>
+          <input
+            [type]="typeInput"
+            id="senha"
+            minlength="8"
+            maxlength="50"
+            placeholder="Digite a sua senha"
+            formControlName="password"
+          />
+          <img
+            [src]="eye"
+            (click)="showPassword()"
+            alt="Icon de olho aberto ou fechado, para mostrar senha ou ocultar"
+          />
+        </div>
+        <div
+          class="error-message"
+          *ngIf="
+            loginForm.get('password')!.invalid &&
+            (loginForm.get('password')!.dirty ||
+              loginForm.get('password')!.touched)
+          "
+        >
+          <!-- Mensagens de erro dinâmicas -->
+          <span *ngIf="loginForm.get('password')!.errors?.['required']">
+            O campo senha é obrigatório.
+          </span>
+          <span *ngIf="loginForm.get('password')!.errors?.['minlength']">
+            A senha deve ter pelo menos 8 caracteres.
+          </span>
+          <span *ngIf="loginForm.get('password')!.errors?.['maxlength']">
+            A senha não pode ter mais de 50 caracteres.
+          </span>
+        </div>
+      </div>
+
+      <!-- Botão de Envio -->
+      <div class="button-group">
+        <button type="submit" [disabled]="loginForm.invalid">Entrar</button>
+      </div>
+
+      <!-- Mensagem de Registro -->
+      <div class="sign-up_message">
+        <span>
+          Ainda não tenho uma conta.
+          <span class="sign-up_link" (click)="signUp()">Criar</span>
+        </span>
       </div>
     </form>
   </section>
