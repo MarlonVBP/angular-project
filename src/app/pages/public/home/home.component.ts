@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
 import { trigger, transition, style, animate } from '@angular/animations';
+import { FooterComponent } from "../../../components/public/footer/footer.component";
+import { HeaderPageComponent } from "../../../components/public/header-page/header-page.component";
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [],
+  imports: [FooterComponent, HeaderPageComponent],
   animations: [
     trigger('fadeIn', [
       transition(':enter', [
