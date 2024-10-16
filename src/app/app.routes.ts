@@ -26,6 +26,16 @@ export const routes: Routes = [
     title: 'Perfil page',
   },
   {
+    path: 'contato',
+    component: PerfilComponent,
+    title: 'Contato page',
+  },
+  {
+    path: 'sobre-nos',
+    component: PerfilComponent,
+    title: 'Perfil page',
+  },
+  {
     path: '**',
     component: HomeComponent,
     title: 'Home page',
