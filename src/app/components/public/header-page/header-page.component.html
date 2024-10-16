@@ -1,1 +1,33 @@
-<p>header-page works!</p>
+<header class="header">
+  <div class="logo">
+    <span><strong>APIReceitas</strong></span>
+  </div>
+  <nav class="navegacao">
+    <ul class="menu" [ngClass]="{ active: isActive }">
+      <li [routerLink]="['/sobre-nos']" [class.active]="this.activeUrl === '/sobre-nos'">
+        <img [ngClass]="{ active: isActive }"
+          src="assets/images/sobre.svg"
+          alt="Ícone que representa a página de perfil"
+        />Sobre
+      </li>
+      <li [routerLink]="['/contato']" [class.active]="this.activeUrl === '/contato'">
+        <img [ngClass]="{ active: isActive }"
+          src="assets/images/contato.svg"
+          alt="Ícone que representa a página de perfil"
+        />Contato
+      </li>
+      <li [routerLink]="['/perfil']" [class.active]="this.activeUrl === '/perfil'">
+        <img [ngClass]="{ active: isActive }"
+          src="assets/images/perfil.svg"
+          alt="Ícone que representa a página de perfil"
+        />Perfil
+      </li>
+    </ul>
+  </nav>
+  <button class="hamburger" (click)="toggleMenu()">
+    <img
+      src="assets/images/menu.svg"
+      alt="Ícone que representa o menu de navegação"
+    />
+  </button>
+</header>
