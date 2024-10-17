@@ -3,6 +3,8 @@ import { HomeComponent } from './pages/public/home/home.component';
 import { LoginComponent } from './pages/public/login/login.component';
 import { SignUpComponent } from './pages/public/sign-up/sign-up.component';
 import { PerfilComponent } from './pages/public/perfil/perfil.component';
+import { ContatoComponent } from './pages/public/contato/contato.component';
+import { SobreNosComponent } from './pages/public/sobre-nos/sobre-nos.component';
 
 export const routes: Routes = [
   {
@@ -27,12 +29,12 @@ export const routes: Routes = [
   },
   {
     path: 'contato',
-    component: PerfilComponent,
+    component: ContatoComponent,
     title: 'Contato page',
   },
   {
     path: 'sobre-nos',
-    component: PerfilComponent,
+    component: SobreNosComponent,
     title: 'Perfil page',
   },
   {

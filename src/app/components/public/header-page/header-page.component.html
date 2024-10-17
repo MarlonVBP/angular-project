@@ -4,16 +4,22 @@
   </div>
   <nav class="navegacao">
     <ul class="menu" [ngClass]="{ active: isActive }">
+      <li [routerLink]="['/']" [class.active]="this.activeUrl === '/'">
+        <img [ngClass]="{ active: isActive }"
+          src="assets/images/home.svg"
+          alt="Ícone que representa a página inicial"
+        />Home
+      </li>
       <li [routerLink]="['/sobre-nos']" [class.active]="this.activeUrl === '/sobre-nos'">
         <img [ngClass]="{ active: isActive }"
           src="assets/images/sobre.svg"
-          alt="Ícone que representa a página de perfil"
+          alt="Ícone que representa a página de sobre"
         />Sobre
       </li>
       <li [routerLink]="['/contato']" [class.active]="this.activeUrl === '/contato'">
         <img [ngClass]="{ active: isActive }"
           src="assets/images/contato.svg"
-          alt="Ícone que representa a página de perfil"
+          alt="Ícone que representa a página de contato"
         />Contato
       </li>
       <li [routerLink]="['/perfil']" [class.active]="this.activeUrl === '/perfil'">
