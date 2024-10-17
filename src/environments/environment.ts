@@ -1,6 +1,5 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://exemple.com',
-  apiReceitasUrl: 'https://api-receitas-pi.vercel.app/',
+  apiUrl: 'https://www.themealdb.com/api/json/v1/1/random.php',
   apiHash: '',
 };
