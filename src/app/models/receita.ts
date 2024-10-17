@@ -1,12 +1,11 @@
-import { IngredientesBase } from "./ingredientes-base";
+import { IngredientesBase } from './ingredientes-base';
 
 export interface Receita {
   id: number;
-  receita: string;
-  ingredientes: string;
-  modo_preparo: string;
-  link_imagem: string;
-  tipo: string;
+  strMeal: string;
+  strMealThumb: string;
+  strInstructions: string;
+  strArea: string;
   created_at: string;
-  ingredientesBase: IngredientesBase[]
+  ingredientesBase: IngredientesBase[];
 }

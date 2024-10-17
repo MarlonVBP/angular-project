@@ -1,6 +1,6 @@
 export interface IngredientesBase {
   id: number;
-  nomesIngrediente: string[];
+  nomeIngrediente: string;
   receita_id: number;
   created_at: string;
 }
