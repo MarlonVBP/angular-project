@@ -58,23 +58,6 @@ export class LoginComponent {
       senha: this.loginForm.value.password,
     };
 
-    this.authService.logar(login).subscribe((data: any) => {
-      console.log(data);
-      if (data.success == '1') {
-        this.snackBar.open('Sucesso ao logar.', 'Fechar', {
-          duration: 3000,
-          verticalPosition: 'bottom',
-          horizontalPosition: 'center',
-        });
-        this.authService.autorizar(data.response);
-        this.router.navigate(['']);
-        return;
-      }
-      this.snackBar.open(data.message + '.', 'Fechar', {
-        duration: 3000,
-        verticalPosition: 'bottom',
-        horizontalPosition: 'center',
-      });
-    });
+    this.authService.logar(login);
   }
 }
