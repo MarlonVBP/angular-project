@@ -1,5 +1,13 @@
 <app-header-page></app-header-page>
 
-<p>home works!</p>
+<main class="container">
+  @if (receitas.length) {
+  <div *ngFor="let receita of receitas">
+    <app-cards-receitas [receita]="receita"></app-cards-receitas>
+  </div>
+  } @else {
+    <span>Nenhuma receita encontrada</span>
+   }
+</main>
 
 <app-footer></app-footer>
