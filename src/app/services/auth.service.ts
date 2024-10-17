@@ -1,14 +1,22 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment.development';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
+import CryptoJS from 'crypto-js';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
   private readonly apiUrl = environment.apiUrl + '/admin/';
+  private readonly secretKey = 'joao-pastal';
 
-  constructor(private httpClient: HttpClient) {}
+  constructor(
+    private httpClient: HttpClient,
+    private snackBar: MatSnackBar,
+    private router: Router
+  ) {}
 
   autorizado = false;
 
@@ -29,9 +37,40 @@ export class AuthService {
     });
   }
 
+  decrypt(encryptedData: string): string {
+    const bytes = CryptoJS.AES.decrypt(encryptedData, this.secretKey);
+    return bytes.toString(CryptoJS.enc.Utf8);
+  }
+
   logar(login: any) {
-    console.log(login);
-    return this.httpClient.post(this.apiUrl + 'login/logar.php', login);
+    const storedEncryptedEmail = localStorage.getItem(
+      'angularProjectUserEmail'
+    );
+    const storedEncryptedPassword = localStorage.getItem(
+      'angularProjectUserPassword'
+    );
+
+    if (storedEncryptedEmail && storedEncryptedPassword) {
+      const decryptedEmail = this.decrypt(storedEncryptedEmail);
+      const decryptedPassword = this.decrypt(storedEncryptedPassword);
+
+      if (login.email === decryptedEmail && login.senha === decryptedPassword) {
+        this.snackBar.open('Sucesso ao logar', 'Fechar', {
+          duration: 3000,
+          verticalPosition: 'bottom',
+          horizontalPosition: 'center',
+        });
+
+        this.router.navigate(['/']);
+        return;
+      }
+    }
+
+    this.snackBar.open('Email ou senha inválidos', 'Fechar', {
+      duration: 3000,
+      verticalPosition: 'bottom',
+      horizontalPosition: 'center',
+    });
   }
 
   resetarSenha(novaSenha: any, token: any) {

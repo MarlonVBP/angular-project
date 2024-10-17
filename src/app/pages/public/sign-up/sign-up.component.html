@@ -33,6 +33,31 @@
 
       <div class="input-group">
         <div>
+          <label for="nome">nome</label>
+          <input
+            type="nome"
+            id="nome"
+            minlength="3"
+            maxlength="100"
+            placeholder="Digite o seu nome"
+            formControlName="nome"
+          />
+        </div>
+        <div
+          class="error-message"
+          *ngIf="
+            signUpForm.get('nome')!.invalid &&
+            (signUpForm.get('nome')!.dirty || signUpForm.get('nome')!.touched)
+          "
+        >
+          <span *ngIf="signUpForm.get('nome')!.errors?.['required']">
+            O campo nome é obrigatório.
+          </span>
+        </div>
+      </div>
+
+      <div class="input-group">
+        <div>
           <label for="password">Senha</label>
           <input
             [type]="typeInput"
@@ -79,7 +104,7 @@
             maxlength="50"
             placeholder="confirme a sua senha"
             formControlName="confirmPassword"
-          /> 
+          />
           <img
             [src]="eyeConfirm"
             (click)="showConfirmPassword()"
@@ -101,7 +126,9 @@
 
       <!-- Botão de Envio -->
       <div class="button-group">
-        <button type="submit" [disabled]="signUpForm.invalid">Criar conta</button>
+        <button type="submit" [disabled]="signUpForm.invalid">
+          Criar conta
+        </button>
       </div>
 
       <!-- Mensagem de Registro -->

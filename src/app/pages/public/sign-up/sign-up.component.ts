@@ -7,8 +7,8 @@ import {
   Validators,
 } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { AuthService } from '../../../services/auth.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { SignUpService } from '../../../services/sign-up.service';
 
 @Component({
   selector: 'app-sign-up',
@@ -20,7 +20,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class SignUpComponent {
   constructor(
     private router: Router,
-    private authService: AuthService,
+    private signUpServ: SignUpService,
     private snackBar: MatSnackBar
   ) {
     this.signUpForm.get('confirmPassword')?.valueChanges.subscribe((value) => {
@@ -49,6 +49,11 @@ export class SignUpComponent {
 
   signUpForm = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
+    nome: new FormControl('', [
+      Validators.required,
+      Validators.minLength(3),
+      Validators.maxLength(30),
+    ]),
     password: new FormControl('', [
       Validators.required,
       Validators.minLength(8),
@@ -94,26 +99,10 @@ export class SignUpComponent {
 
     const login = {
       email: this.signUpForm.value.email,
+      nome: this.signUpForm.value.nome,
       password: this.signUpForm.value.password,
     };
 
-    this.authService.logar(login).subscribe((data: any) => {
-      console.log(data);
-      if (data.success == '1') {
-        this.snackBar.open('Sucesso ao logar.', 'Fechar', {
-          duration: 3000,
-          verticalPosition: 'bottom',
-          horizontalPosition: 'center',
-        });
-        this.authService.autorizar(data.response);
-        this.router.navigate(['']);
-        return;
-      }
-      this.snackBar.open(data.message + '.', 'Fechar', {
-        duration: 3000,
-        verticalPosition: 'bottom',
-        horizontalPosition: 'center',
-      });
-    });
+    this.signUpServ.create(login);
   }
 }

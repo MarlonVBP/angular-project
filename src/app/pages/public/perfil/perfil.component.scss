@@ -1,0 +1,140 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 100%;
+  min-height: calc(100vh - 160px);
+
+  .card {
+    width: 100%;
+    max-width: 300px;
+
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+    border-radius: 10px;
+
+    padding: 20px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+
+    .header-card {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      img {
+        border-radius: 50%;
+        object-fit: cover;
+        width: 96px;
+        height: 96px;
+
+        border: 2px solid var(--primary-color);
+
+        padding: 2px;
+      }
+    }
+
+    .main-card {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      .form {
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        flex-direction: column;
+        gap: 30px;
+        margin-top: 20px;
+
+        .input-group {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          gap: 10px;
+
+          div {
+            position: relative;
+          }
+
+          label {
+            position: absolute;
+            background: white;
+            padding: 0 5px;
+            top: -25%;
+            left: 10%;
+          }
+
+          input {
+            padding: 10px;
+            border-radius: 10px;
+            width: 206px;
+          }
+
+          img {
+            position: absolute;
+            right: 5%;
+            top: 25%;
+          }
+
+          input {
+            padding: 10px;
+            border-radius: 10px;
+          }
+
+          img {
+            position: absolute;
+            right: 5%;
+            top: 25%;
+          }
+
+          .error-message {
+            color: var(--danger-color-light);
+          }
+        }
+        .button-group {
+          margin-top: 10px;
+
+          button {
+            padding: 10px 20px;
+            width: 206px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 16px;
+            border: none;
+
+            color: white;
+            background: var(--primary-color);
+            transition: all 0.4s ease;
+
+            &:hover {
+              transform: scale(1.05);
+            }
+          }
+        }
+        .sign-up_message {
+          font-size: 14px;
+          font-weight: 500;
+
+          .sign-up_link {
+            color: var(--primary-color);
+            cursor: pointer;
+            transition: all 0.4s ease;
+            margin-left: 5px;
+
+            &:hover {
+              text-decoration: underline;
+            }
+          }
+        }
+      }
+    }
+  }
+}
