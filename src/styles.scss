@@ -49,5 +49,21 @@
   font-family: var(--font-family);
 }
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+button {
+  cursor: pointer;
+}
+
+.input-group {
+  img {
+    cursor: pointer;
+  }
+}
