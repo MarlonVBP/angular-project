@@ -1,0 +1,11 @@
+{
+    "/api": {
+      "target": "https://www.themealdb.com/api/json/v1/1/random.php",
+      "secure": false,
+      "changeOrigin": true,
+      "logLevel": "debug",
+      "pathRewrite": {
+        "^/api": ""
+      }
+    }
+  }

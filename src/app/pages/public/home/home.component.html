@@ -1,5 +1,24 @@
 <app-header-page></app-header-page>
 
-<p>home works!</p>
+<main class="container">
+  @if (receitas.length) {
+  <div class="container-card">
+    <div *ngFor="let receita of receitas">
+      <app-cards-receitas [receita]="receita"></app-cards-receitas>
+    </div>
+  </div>
+  <div class="pagination">
+    <button (click)="nextPage()" *ngIf="!loadingrecipes">
+      <span>Ver mais</span>
+    </button>
+    <button (click)="nextPage()" *ngIf="loadingrecipes">
+      <mat-spinner class="spinner" ></mat-spinner>
+      <span>Carregando...</span>
+    </button>
+  </div>
+  } @else {
+  <span>Nenhuma receita encontrada</span>
+  }
+</main>
 
 <app-footer></app-footer>

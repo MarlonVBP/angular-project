@@ -1,5 +1,5 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://exemple.com',
+  apiUrl: 'https://www.themealdb.com/api/json/v1/1/random.php',
   apiHash: ''
 };
