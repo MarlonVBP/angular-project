@@ -7,6 +7,7 @@ import { CommonModule } from '@angular/common';
 import { Receita } from '../../../models/receita';
 import { ReceitasService } from '../../../services/receitas.service';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { ModalReceitasComponent } from '../../../components/modal-receitas/modal-receitas.component';
 
 @Component({
   selector: 'app-home',
@@ -17,6 +18,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     CardsReceitasComponent,
     CommonModule,
     MatProgressSpinnerModule,
+    ModalReceitasComponent,
   ],
   animations: [
     trigger('fadeIn', [
@@ -57,5 +59,17 @@ export class HomeComponent {
   nextPage(): void {
     this.currentPage++;
     this.load(this.currentPage);
+  }
+
+  selectedRecipe: any;
+  isModalOpen: boolean = false;
+
+  showInput(recipe: any) {
+    this.selectedRecipe = recipe;
+    this.isModalOpen = true;
+  }
+
+  handleModalClose(isOpen: boolean) {
+    this.isModalOpen = isOpen;
   }
 }

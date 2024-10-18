@@ -1,0 +1,28 @@
+<div class="modal" [ngClass]="{ show: showModal }">
+  <div class="modal-content">
+    <span class="close-btn" (click)="closeModal()">&times;</span>
+
+    <h2>{{ recipeData?.strMeal }}</h2>
+    <img
+      [src]="recipeData?.strMealThumb"
+      alt="{{ recipeData?.strMeal }}"
+      class="recipe-image"
+    />
+
+    <p><strong>Category:</strong> {{ recipeData?.strCategory }}</p>
+    <p><strong>Country of origin:</strong> {{ recipeData?.strArea }}</p>
+    <p><strong>Instructions:</strong> {{ recipeData?.strInstructions }}</p>
+
+    <h3><strong>Ingredients</strong></h3>
+    <ul>
+      <li *ngFor="let ingredient of getIngredients()">{{ ingredient }}</li>
+    </ul>
+
+    <p *ngIf="recipeData?.strSource">
+      <a [href]="recipeData?.strSource" target="_blank">Source</a>
+    </p>
+    <p *ngIf="recipeData?.strYoutube">
+      <a [href]="recipeData?.strYoutube" target="_blank">Watch on YouTube</a>
+    </p>
+  </div>
+</div>
