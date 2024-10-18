@@ -45,18 +45,18 @@
   height: auto;
   max-height: 400px;
   display: block;
-  margin: 0 auto 15px; /* Centralizando a imagem */
+  margin: 0 auto 15px;
   border-radius: 10px;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
 
 h2,
 p {
-  font-size: 1em; /* Aumentando o tamanho dos textos */
+  font-size: 1em;
 }
 
 ul {
-  padding-left: 20px; /* Adicionando padding para alinhar a lista */
+  padding-left: 20px;
 }
 
 ul li {
@@ -65,13 +65,13 @@ ul li {
 }
 
 a {
-  color: #007bff; /* Cor padrão do link */
+  color: #007bff;
   text-decoration: none;
   cursor: pointer;
 }
 
 a:hover {
-  color: #0056b3; /* Cor do link ao passar o mouse */
+  color: #0056b3;
   text-decoration: underline;
 }
 
