@@ -31,10 +31,10 @@ export class AuthService {
   }
 
   statusLogin() {
-    let token = localStorage.getItem('token');
-    return this.httpClient.post(this.apiUrl + 'login/verificarlogin.php', {
-      token: token,
-    });
+    if (localStorage.getItem('angularProjectUserPassword')) {
+    return true
+    }
+    return false
   }
 
   decrypt(encryptedData: string): string {
