@@ -8,6 +8,7 @@ import { Receita } from '../../../models/receita';
 import { ReceitasService } from '../../../services/receitas.service';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { ModalReceitasComponent } from '../../../components/modal-receitas/modal-receitas.component';
+import { FabButtonComponent } from "../../../components/public/fab-button/fab-button.component";
 
 @Component({
   selector: 'app-home',
@@ -19,7 +20,8 @@ import { ModalReceitasComponent } from '../../../components/modal-receitas/modal
     CommonModule,
     MatProgressSpinnerModule,
     ModalReceitasComponent,
-  ],
+    FabButtonComponent
+],
   animations: [
     trigger('fadeIn', [
       transition(':enter', [

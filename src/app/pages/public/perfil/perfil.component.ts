@@ -25,7 +25,7 @@ import { FooterComponent } from '../../../components/public/footer/footer.compon
   styleUrl: './perfil.component.scss',
 })
 export class PerfilComponent {
-  private readonly secretKey = 'joao-pastal';
+  private readonly secretKey = 'Y7f!8Kp2$hS@jB1xL3zR^vW9qTm&XcN';
 
   images: string[] = [
     'https://images.pexels.com/photos/28902884/pexels-photo-28902884.jpeg',
