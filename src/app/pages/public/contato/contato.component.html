@@ -1,3 +1,135 @@
 <app-header-page></app-header-page>
-<p>contato works!</p>
+<section class="container" @fadeIn>
+  <div class="contact">
+    <div class="contact-header">
+      <h1 class="title">Fale conosco</h1>
+      <span class="text">
+        <strong>Estamos aqui para ajudar!</strong> Se você tem sugestões,
+        reclamações ou precisa resolver um problema, entre em contato conosco.
+      </span>
+    </div>
+    <div class="contact-main">
+      <form class="form" [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+        <div class="group-inputs">
+          <div class="input-group">
+            <div>
+              <label for="name">Nome</label>
+              <input
+                type="name"
+                id="name"
+                minlength="3"
+                maxlength="100"
+                placeholder="Digite o seu nome"
+                formControlName="name"
+              />
+            </div>
+            <div
+              class="error-message"
+              *ngIf="
+                contactForm.get('name')!.invalid &&
+                (contactForm.get('name')!.dirty ||
+                  contactForm.get('name')!.touched)
+              "
+            >
+              <span *ngIf="contactForm.get('name')!.errors?.['required']">
+                O campo nome é obrigatório.
+              </span>
+              <span *ngIf="contactForm.get('name')!.errors?.['name']">
+                O formato do nome é inválido.
+              </span>
+            </div>
+          </div>
+
+          <div class="input-group">
+            <div>
+              <label for="email">Email</label>
+              <input
+                type="email"
+                id="email"
+                minlength="3"
+                maxlength="100"
+                placeholder="Digite o seu email"
+                formControlName="email"
+              />
+            </div>
+            <div
+              class="error-message"
+              *ngIf="
+                contactForm.get('email')!.invalid &&
+                (contactForm.get('email')!.dirty ||
+                  contactForm.get('email')!.touched)
+              "
+            >
+              <span *ngIf="contactForm.get('email')!.errors?.['required']">
+                O campo email é obrigatório.
+              </span>
+              <span *ngIf="contactForm.get('email')!.errors?.['email']">
+                O formato do email é inválido.
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="input-group">
+          <div>
+            <label for="category">categoria</label>
+            <select id="category" formControlName="category" required>
+              <option disabled value="">Selecione</option>
+              <option value="contato">Contato</option>
+              <option value="ajuda">Ajuda</option>
+              <option value="suporte">Suporte</option>
+            </select>
+          </div>
+          <div
+            class="error-message"
+            *ngIf="
+              contactForm.get('category')!.invalid &&
+              (contactForm.get('category')!.dirty ||
+                contactForm.get('category')!.touched)
+            "
+          >
+            <span *ngIf="contactForm.get('category')!.errors?.['required']">
+              O campo categoria é obrigatório.
+            </span>
+            <span *ngIf="contactForm.get('category')!.errors?.['category']">
+              O formato do categoria é inválido.
+            </span>
+          </div>
+        </div>
+
+        <div class="input-group">
+          <div>
+            <label for="message">Mensagem</label>
+            <textarea
+              type="message"
+              id="message"
+              minlength="3"
+              maxlength="100"
+              placeholder="Digite a sua mensagem"
+              formControlName="message"
+            ></textarea>
+          </div>
+          <div
+            class="error-message"
+            *ngIf="
+              contactForm.get('message')!.invalid &&
+              (contactForm.get('message')!.dirty ||
+                contactForm.get('message')!.touched)
+            "
+          >
+            <span *ngIf="contactForm.get('message')!.errors?.['required']">
+              O campo mensagem é obrigatório.
+            </span>
+            <span *ngIf="contactForm.get('message')!.errors?.['message']">
+              O formato do mensagem é inválido.
+            </span>
+          </div>
+        </div>
+        <div class="button-group">
+          <button type="submit" [disabled]="contactForm.invalid">Enviar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
 <app-footer></app-footer>

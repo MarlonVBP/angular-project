@@ -1,10 +1,13 @@
 <app-header-page></app-header-page>
 
-<main class="container">
+<main class="container" @fadeIn>
   @if (receitas.length) {
   <div class="container-card">
     <div *ngFor="let receita of receitas">
-      <app-cards-receitas [receita]="receita"></app-cards-receitas>
+      <app-cards-receitas
+        [receita]="receita"
+        (click)="showInput(receita)"
+      ></app-cards-receitas>
     </div>
   </div>
   <div class="pagination">
@@ -12,13 +15,21 @@
       <span>Ver mais</span>
     </button>
     <button (click)="nextPage()" *ngIf="loadingrecipes">
-      <mat-spinner class="spinner" ></mat-spinner>
+      <mat-spinner class="spinner"></mat-spinner>
       <span>Carregando...</span>
     </button>
   </div>
   } @else {
   <span>Nenhuma receita encontrada</span>
   }
+
+  <app-modal-receitas
+    [recipeData]="selectedRecipe"
+    [showModal]="isModalOpen"
+    (closeModalEvent)="handleModalClose($event)"
+  ></app-modal-receitas>
+
+  <app-fab-button></app-fab-button>
 </main>
 
 <app-footer></app-footer>

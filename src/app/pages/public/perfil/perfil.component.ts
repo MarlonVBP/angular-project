@@ -10,6 +10,7 @@ import CryptoJS from 'crypto-js';
 import { SignUpService } from '../../../services/sign-up.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { HeaderPageComponent } from '../../../components/public/header-page/header-page.component';
+import { trigger, transition, style, animate } from '@angular/animations';
 import { FooterComponent } from '../../../components/public/footer/footer.component';
 
 @Component({
@@ -21,11 +22,22 @@ import { FooterComponent } from '../../../components/public/footer/footer.compon
     HeaderPageComponent,
     FooterComponent,
   ],
+  animations: [
+    trigger('fadeIn', [
+      transition(':enter', [
+        style({ opacity: 0, transform: 'translateY(20px)' }),
+        animate(
+          '0.5s ease-in',
+          style({ opacity: 1, transform: 'translateY(0)' })
+        ),
+      ]),
+    ]),
+  ],
   templateUrl: './perfil.component.html',
   styleUrl: './perfil.component.scss',
 })
 export class PerfilComponent {
-  private readonly secretKey = 'joao-pastal';
+  private readonly secretKey = 'Y7f!8Kp2$hS@jB1xL3zR^vW9qTm&XcN';
 
   images: string[] = [
     'https://images.pexels.com/photos/28902884/pexels-photo-28902884.jpeg',

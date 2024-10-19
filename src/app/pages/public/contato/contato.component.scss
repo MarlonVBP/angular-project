@@ -1,0 +1,173 @@
+.container {
+  width: 100%;
+  min-height: calc(100vh - 160px);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .contact {
+    max-width: 750px;
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    padding: 20px;
+
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+    .contact-header {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      width: 100%;
+      gap: 20px;
+
+      .title {
+        color: var(--primary-color);
+        font-size: 3em;
+        font-weight: 700;
+      }
+
+      .text {
+        width: 100%;
+        font-size: 1.4em;
+        text-align: center;
+      }
+    }
+
+    .contact-main {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 20px;
+
+      .form {
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        flex-direction: column;
+        gap: 30px;
+        margin-top: 20px;
+
+        .group-inputs {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          gap: 10px;
+        }
+
+        .input-group {
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+
+          div {
+            position: relative;
+          }
+
+          label {
+            position: absolute;
+            background: white;
+            padding: 0 5px;
+            top: -25%;
+            left: 10%;
+          }
+
+          input,
+          textarea,
+          select {
+            padding: 10px;
+            border-radius: 10px;
+            width: 206px;
+          }
+
+          textarea,
+          select {
+            width: 422px;
+          }
+
+          img {
+            position: absolute;
+            right: 5%;
+            top: 25%;
+          }
+
+          input {
+            padding: 10px;
+            border-radius: 10px;
+          }
+
+          img {
+            position: absolute;
+            right: 5%;
+            top: 25%;
+          }
+
+          .error-message {
+            color: var(--danger-color-light);
+          }
+        }
+        .button-group {
+          margin-top: 10px;
+
+          button {
+            padding: 10px 20px;
+            width: 206px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 16px;
+            border: none;
+
+            color: white;
+            background: var(--primary-color);
+            transition: all 0.4s ease;
+
+            &:hover {
+              transform: scale(1.05);
+            }
+          }
+        }
+        .sign-up_message {
+          font-size: 14px;
+          font-weight: 500;
+
+          .sign-up_link {
+            color: var(--primary-color);
+            cursor: pointer;
+            transition: all 0.4s ease;
+            margin-left: 5px;
+
+            &:hover {
+              text-decoration: underline;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 500px) {
+  .form {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+    gap: 30px;
+    margin-top: 20px;
+
+    .group-inputs {
+      flex-direction: column;
+    }
+
+    .input-group {
+      textarea,
+      select {
+        width: 206px !important;
+      }
+    }
+  }
+}

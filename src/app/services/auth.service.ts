@@ -10,7 +10,7 @@ import CryptoJS from 'crypto-js';
 })
 export class AuthService {
   private readonly apiUrl = environment.apiUrl + '/admin/';
-  private readonly secretKey = 'joao-pastal';
+  private readonly secretKey = 'Y7f!8Kp2$hS@jB1xL3zR^vW9qTm&XcN';
 
   constructor(
     private httpClient: HttpClient,

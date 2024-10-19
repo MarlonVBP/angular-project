@@ -7,7 +7,7 @@ import CryptoJS from 'crypto-js';
   providedIn: 'root',
 })
 export class SignUpService {
-  private readonly secretKey = 'joao-pastal';
+  private readonly secretKey = 'Y7f!8Kp2$hS@jB1xL3zR^vW9qTm&XcN';
 
   constructor(private snackBar: MatSnackBar, private router: Router) {}
 
