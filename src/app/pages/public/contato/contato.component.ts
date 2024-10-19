@@ -10,6 +10,7 @@ import {
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { CommonModule } from '@angular/common';
 import CryptoJS from 'crypto-js';
+import { trigger, transition, style, animate } from '@angular/animations';
 
 @Component({
   selector: 'app-contato',
@@ -20,10 +21,21 @@ import CryptoJS from 'crypto-js';
     ReactiveFormsModule,
     CommonModule,
   ],
+  animations: [
+    trigger('fadeIn', [
+      transition(':enter', [
+        style({ opacity: 0, transform: 'translateY(20px)' }),
+        animate(
+          '0.5s ease-in',
+          style({ opacity: 1, transform: 'translateY(0)' })
+        ),
+      ]),
+    ]),
+  ],
   templateUrl: './contato.component.html',
   styleUrl: './contato.component.scss',
 })
-export class ContatoComponent implements OnInit{
+export class ContatoComponent implements OnInit {
   private readonly secretKey = 'Y7f!8Kp2$hS@jB1xL3zR^vW9qTm&XcN';
   constructor(private snackBar: MatSnackBar) {}
 
@@ -34,8 +46,8 @@ export class ContatoComponent implements OnInit{
     this.email = this.decrypt(localStorage.getItem('angularProjectUserEmail')!);
     this.name = this.decrypt(localStorage.getItem('angularProjectUserNome')!);
 
-    console.log(this.email)
-    console.log(this.name)
+    console.log(this.email);
+    console.log(this.name);
     this.contactForm.patchValue({
       email: this.email,
       name: this.name,
