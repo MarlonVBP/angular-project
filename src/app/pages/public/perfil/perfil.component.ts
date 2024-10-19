@@ -10,6 +10,7 @@ import CryptoJS from 'crypto-js';
 import { SignUpService } from '../../../services/sign-up.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { HeaderPageComponent } from '../../../components/public/header-page/header-page.component';
+import { trigger, transition, style, animate } from '@angular/animations';
 import { FooterComponent } from '../../../components/public/footer/footer.component';
 
 @Component({
@@ -20,6 +21,17 @@ import { FooterComponent } from '../../../components/public/footer/footer.compon
     ReactiveFormsModule,
     HeaderPageComponent,
     FooterComponent,
+  ],
+  animations: [
+    trigger('fadeIn', [
+      transition(':enter', [
+        style({ opacity: 0, transform: 'translateY(20px)' }),
+        animate(
+          '0.5s ease-in',
+          style({ opacity: 1, transform: 'translateY(0)' })
+        ),
+      ]),
+    ]),
   ],
   templateUrl: './perfil.component.html',
   styleUrl: './perfil.component.scss',

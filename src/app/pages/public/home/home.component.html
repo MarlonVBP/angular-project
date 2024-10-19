@@ -1,6 +1,6 @@
 <app-header-page></app-header-page>
 
-<main class="container">
+<main class="container" @fadeIn>
   @if (receitas.length) {
   <div class="container-card">
     <div *ngFor="let receita of receitas">
