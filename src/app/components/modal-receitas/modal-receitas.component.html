@@ -18,10 +18,12 @@
       <li *ngFor="let ingredient of getIngredients()">{{ ingredient }}</li>
     </ul>
 
-    <p *ngIf="recipeData?.strSource">
+    <p class="link" *ngIf="recipeData?.strSource">
+      <img src="assets/images/chrome.svg" alt="Ícone que representa o google chrome">
       <a [href]="recipeData?.strSource" target="_blank">Source</a>
     </p>
-    <p *ngIf="recipeData?.strYoutube">
+    <p class="link" *ngIf="recipeData?.strYoutube">
+      <img src="assets/images/youtube.svg" alt="Ícone que representa o youtube">
       <a [href]="recipeData?.strYoutube" target="_blank">Watch on YouTube</a>
     </p>
   </div>
