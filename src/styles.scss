@@ -71,3 +71,13 @@ button {
 .container {
   position: relative;
 }
+
+.logomarca {
+  padding: 5px;
+  border: 2px solid var(--primary-color);
+  border-radius: 50%;
+}
+
+textarea {
+  resize: vertical;
+}

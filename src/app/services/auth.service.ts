@@ -55,12 +55,6 @@ export class AuthService {
       const decryptedPassword = this.decrypt(storedEncryptedPassword);
 
       if (login.email === decryptedEmail && login.senha === decryptedPassword) {
-        this.snackBar.open('Sucesso ao logar', 'Fechar', {
-          duration: 3000,
-          verticalPosition: 'bottom',
-          horizontalPosition: 'center',
-        });
-
         this.router.navigate(['/']);
         return;
       }

@@ -1,7 +1,11 @@
 <section class="container" @fadeIn>
   <section class="container__form">
     <h1>Bem-vindo</h1>
-    <img src="assets/images/logo.svg" alt="Logo marca do site" />
+    <img
+      class="logomarca"
+      src="assets/images/logo.svg"
+      alt="Logo marca do site"
+    />
     <form class="form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
       <div class="input-group">
         <div>
