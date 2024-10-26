@@ -60,7 +60,6 @@
               loginForm.get('password')!.touched)
           "
         >
-          <!-- Mensagens de erro dinâmicas -->
           <span *ngIf="loginForm.get('password')!.errors?.['required']">
             O campo senha é obrigatório.
           </span>
@@ -73,12 +72,10 @@
         </div>
       </div>
 
-      <!-- Botão de Envio -->
       <div class="button-group">
         <button type="submit" [disabled]="loginForm.invalid">Entrar</button>
       </div>
 
-      <!-- Mensagem de Registro -->
       <div class="sign-up_message">
         <span>
           Ainda não tenho uma conta.

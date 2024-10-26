@@ -18,7 +18,6 @@ export class HeaderPageComponent {
       .pipe(filter((event) => event instanceof NavigationEnd))
       .subscribe(() => {
         this.activeUrl = this.router.url;
-        console.log(this.activeUrl);
       });
   }
 

@@ -46,8 +46,6 @@ export class ContatoComponent implements OnInit {
     this.email = this.decrypt(localStorage.getItem('angularProjectUserEmail')!);
     this.name = this.decrypt(localStorage.getItem('angularProjectUserNome')!);
 
-    console.log(this.email);
-    console.log(this.name);
     this.contactForm.patchValue({
       email: this.email,
       name: this.name,

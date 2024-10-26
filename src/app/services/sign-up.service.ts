@@ -25,7 +25,6 @@ export class SignUpService {
       this.secretKey
     ).toString();
 
-    // Armazenar os dados criptografados no localStorage
     localStorage.setItem('angularProjectUserEmail', encryptedEmail);
     localStorage.setItem('angularProjectUserNome', encryptedNome);
     localStorage.setItem('angularProjectUserPassword', encryptedPassword);
@@ -48,7 +47,6 @@ export class SignUpService {
       this.secretKey
     ).toString();
 
-    // Armazenar os dados criptografados no localStorage
     localStorage.setItem('angularProjectUserEmail', encryptedEmail);
     localStorage.setItem('angularProjectUserPassword', encryptedPassword);
 

@@ -8,7 +8,7 @@ import { Receita } from '../../../models/receita';
 import { ReceitasService } from '../../../services/receitas.service';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { ModalReceitasComponent } from '../../../components/modal-receitas/modal-receitas.component';
-import { FabButtonComponent } from "../../../components/public/fab-button/fab-button.component";
+import { FabButtonComponent } from '../../../components/public/fab-button/fab-button.component';
 
 @Component({
   selector: 'app-home',
@@ -20,8 +20,8 @@ import { FabButtonComponent } from "../../../components/public/fab-button/fab-bu
     CommonModule,
     MatProgressSpinnerModule,
     ModalReceitasComponent,
-    FabButtonComponent
-],
+    FabButtonComponent,
+  ],
   animations: [
     trigger('fadeIn', [
       transition(':enter', [
@@ -53,7 +53,6 @@ export class HomeComponent {
       .subscribe((responses: any[]) => {
         const newReceitas = responses.map((response) => response.meals[0]);
         this.receitas = [...this.receitas, ...newReceitas];
-        console.log(this.receitas);
         this.loadingrecipes = false;
       });
   }

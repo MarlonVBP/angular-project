@@ -85,7 +85,6 @@
               signUpForm.get('password')!.touched)
           "
         >
-          <!-- Mensagens de erro dinâmicas -->
           <span *ngIf="signUpForm.get('password')!.errors?.['required']">
             O campo senha é obrigatório.
           </span>
@@ -123,19 +122,16 @@
               signUpForm.get('confirmPassword')!.touched)
           "
         >
-          <!-- Mensagens de erro dinâmicas -->
           <span> As senhas não coincidem. </span>
         </div>
       </div>
 
-      <!-- Botão de Envio -->
       <div class="button-group">
         <button type="submit" [disabled]="signUpForm.invalid">
           Criar conta
         </button>
       </div>
 
-      <!-- Mensagem de Registro -->
       <div class="sign-up_message">
         <span>
           Já tenho uma conta.

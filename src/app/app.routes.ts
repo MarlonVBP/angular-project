@@ -40,7 +40,7 @@ export const routes: Routes = [
   {
     path: 'sobre-nos',
     component: SobreNosComponent,
-    title: 'Perfil page',
+    title: 'Hello world',
     canActivate: [authGuard],
   },
   {

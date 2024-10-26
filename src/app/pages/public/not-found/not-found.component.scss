@@ -1,4 +1,4 @@
-.container{
+.container {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -7,56 +7,54 @@
   flex-direction: column;
   gap: 20px;
 
-  .title{
+  .title {
     font-size: 10rem;
     font-weight: bolder;
   }
 
-  .sub-title{
+  .sub-title {
     margin-top: 60px;
     font-size: 2rem;
     font-weight: bold;
   }
 
-  .button{
+  .button {
     background: var(--primary-color);
     border-radius: 20px;
     padding: 10px 20px;
-    transition: all .4s ease;
+    transition: all 0.4s ease;
     color: white;
     text-decoration: none;
     text-transform: uppercase;
     cursor: pointer;
 
-    &:hover{
+    &:hover {
       transform: scale(1.05);
     }
   }
 }
 
-
-@media (max-width: 600px){
-  .container{
-
-    .title{
+@media (max-width: 600px) {
+  .container {
+    .title {
       text-align: center;
       font-size: 6rem;
     }
 
-    p{
+    p {
       text-align: center;
     }
 
-    .button{
+    .button {
       background: var(--secondary-color);
       border-radius: 20px;
       padding: 10px 20px;
-      transition: all .4s ease;
+      transition: all 0.4s ease;
       color: white;
       text-decoration: none;
       text-transform: uppercase;
 
-      &:hover{
+      &:hover {
         transform: scale(1.05);
       }
     }

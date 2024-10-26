@@ -1,6 +1,4 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { environment } from '../../environments/environment.development';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import CryptoJS from 'crypto-js';
@@ -9,22 +7,9 @@ import CryptoJS from 'crypto-js';
   providedIn: 'root',
 })
 export class AuthService {
-  private readonly apiUrl = environment.apiUrl + '/admin/';
   private readonly secretKey = 'Y7f!8Kp2$hS@jB1xL3zR^vW9qTm&XcN';
 
-  constructor(
-    private httpClient: HttpClient,
-    private snackBar: MatSnackBar,
-    private router: Router
-  ) {}
-
-  autorizado = false;
-
-  autorizar(response: any) {
-    localStorage.setItem('token', response.token);
-    localStorage.setItem('email', response.email);
-    localStorage.setItem('nome', response.nome);
-  }
+  constructor(private snackBar: MatSnackBar, private router: Router) {}
 
   deslogar() {
     localStorage.clear();
@@ -65,19 +50,5 @@ export class AuthService {
       verticalPosition: 'bottom',
       horizontalPosition: 'center',
     });
-  }
-
-  resetarSenha(novaSenha: any, token: any) {
-    return this.httpClient.post(
-      this.apiUrl + 'resetar-senha/resetar-senha.php',
-      { token: token, new_password: novaSenha }
-    );
-  }
-
-  sendResetPasswordLink(email: string) {
-    return this.httpClient.post(
-      this.apiUrl + 'resetar-senha/request_password_reset.php',
-      { email: email }
-    );
   }
 }
