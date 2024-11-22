@@ -27,13 +27,19 @@ export const routes: Routes = [
   },
   {
     path: 'perfil',
-    component: PerfilComponent,
+    loadComponent: () =>
+      import('./pages/public/perfil/perfil.component').then(
+        (m) => m.PerfilComponent
+      ),
     title: 'Perfil page',
     canActivate: [authGuard],
   },
   {
     path: 'contato',
-    component: ContatoComponent,
+    loadComponent: () =>
+      import('./pages/public/contato/contato.component').then(
+        (m) => m.ContatoComponent
+      ),
     title: 'Contato page',
     canActivate: [authGuard],
   },

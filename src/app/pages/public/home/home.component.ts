@@ -84,7 +84,7 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  selectedRecipe: any;
+  selectedRecipe: Receita[] = [];
   isModalOpen: boolean = false;
 
   showInput(recipe: any) {
