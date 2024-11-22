@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { trigger, transition, style, animate } from '@angular/animations';
 import { FooterComponent } from '../../../components/public/footer/footer.component';
 import { HeaderPageComponent } from '../../../components/public/header-page/header-page.component';
@@ -9,6 +9,7 @@ import { ReceitasService } from '../../../services/receitas.service';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { ModalReceitasComponent } from '../../../components/modal-receitas/modal-receitas.component';
 import { FabButtonComponent } from '../../../components/public/fab-button/fab-button.component';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -36,14 +37,29 @@ import { FabButtonComponent } from '../../../components/public/fab-button/fab-bu
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit {
   receitas: Receita[] = [];
   currentPage: number = 1;
   pageSize: number = 9;
   loadingrecipes: boolean = false;
+  maxRecipes: number = 50;
+  updateSubscription!: Subscription;
 
   constructor(private receitaService: ReceitasService) {
     this.load(this.currentPage);
+  }
+
+  ngOnInit(): void {
+    this.updateSubscription = this.receitaService
+      .getRecipesWithUpdates(10000)
+      .subscribe((recipes) => {
+        if (this.receitas.length >= this.maxRecipes) {
+          this.updateSubscription.unsubscribe(); // Para de buscar novas receitas
+        } else {
+          const newReceitas = recipes.map((response) => response.meals[0]);
+          this.receitas = [...this.receitas, ...newReceitas];
+        }
+      });
   }
 
   load(page: number): void {
@@ -58,8 +74,14 @@ export class HomeComponent {
   }
 
   nextPage(): void {
-    this.currentPage++;
-    this.load(this.currentPage);
+    if (this.receitas.length >= this.maxRecipes) {
+      this.receitas = [];
+      this.currentPage = 1;
+      this.load(this.currentPage);
+    } else {
+      this.currentPage++;
+      this.load(this.currentPage);
+    }
   }
 
   selectedRecipe: any;

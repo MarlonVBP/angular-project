@@ -11,6 +11,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 export class ModalReceitasComponent {
   @Input() recipeData: any;
   @Input() showModal: boolean = false;
+  @Output() closeModalEvent = new EventEmitter<boolean>();
 
   getIngredients(): string[] {
     const ingredients = [];
@@ -23,10 +24,7 @@ export class ModalReceitasComponent {
     }
     return ingredients;
   }
-
-  @Output() closeModalEvent = new EventEmitter<boolean>();
-
   closeModal() {
-    this.closeModalEvent.emit(false); // Emite o evento para o componente pai
+    this.closeModalEvent.emit(false);
   }
 }

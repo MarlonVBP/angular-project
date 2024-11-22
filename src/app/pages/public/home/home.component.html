@@ -12,7 +12,11 @@
   </div>
   <div class="pagination">
     <button (click)="nextPage()" *ngIf="!loadingrecipes">
+      @if(receitas.length < 49){
       <span>Ver mais</span>
+      }@else{
+      <span>Atualizar lista</span>
+      }
     </button>
     <button (click)="nextPage()" *ngIf="loadingrecipes">
       <mat-spinner class="spinner"></mat-spinner>
