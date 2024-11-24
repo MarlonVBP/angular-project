@@ -1,10 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 import { AppComponent } from './app.component';
+import { SplashScreenComponent } from './components/splash-screen/splash-screen.component';
+import { RouterOutlet } from '@angular/router';
 
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AppComponent],
+      imports: [AppComponent, SplashScreenComponent, RouterOutlet],
     }).compileComponents();
   });
 
@@ -20,10 +22,19 @@ describe('AppComponent', () => {
     expect(app.title).toEqual('angular-project');
   });
 
-  it('should render title', () => {
+  it('should render the splash screen', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, angular-project');
+    const splashScreen = compiled.querySelector('app-splash-screen');
+    expect(splashScreen).toBeTruthy();
+  });
+
+  it('should have a router outlet', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    fixture.detectChanges();
+    const compiled = fixture.nativeElement as HTMLElement;
+    const routerOutlet = compiled.querySelector('router-outlet');
+    expect(routerOutlet).toBeTruthy();
   });
 });

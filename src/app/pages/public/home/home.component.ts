@@ -7,7 +7,7 @@ import { CommonModule } from '@angular/common';
 import { Receita } from '../../../models/receita';
 import { ReceitasService } from '../../../services/receitas.service';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { ModalReceitasComponent } from '../../../components/modal-receitas/modal-receitas.component';
+import { ModalReceitasComponent } from '../../../components/public/modal-receitas/modal-receitas.component';
 import { FabButtonComponent } from '../../../components/public/fab-button/fab-button.component';
 import { Subscription } from 'rxjs';
 

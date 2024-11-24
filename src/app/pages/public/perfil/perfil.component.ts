@@ -49,14 +49,14 @@ export class PerfilComponent {
     'https://images.pexels.com/photos/28895983/pexels-photo-28895983.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
   ];
 
-  imagemDePerfil: string = '';
+  imagemDePerfil: string = 'https://images.pexels.com/photos/28902884/pexels-photo-28902884.jpeg';
   email: string = '';
   nome: string = '';
 
   ngOnInit() {
     this.imagemDePerfil = this.images[Math.floor(Math.random() * 7)];
-    this.email = this.decrypt(localStorage.getItem('angularProjectUserEmail')!);
-    this.nome = this.decrypt(localStorage.getItem('angularProjectUserNome')!);
+    this.email = this.decrypt(localStorage.getItem('angularProjectUserEmail') || '');
+    this.nome = this.decrypt(localStorage.getItem('angularProjectUserNome') || '');
   }
 
   decrypt(encryptedData: string): string {
@@ -96,13 +96,13 @@ export class PerfilComponent {
     const passwordInput = document.getElementById(
       'password'
     ) as HTMLInputElement;
-    const password = passwordInput ? passwordInput.value : null;
+    const password = passwordInput ? passwordInput.value : '';
     const confirmPasswordInput = document.getElementById(
       'confirm-password'
     ) as HTMLInputElement;
     const confirmPassword = confirmPasswordInput
       ? confirmPasswordInput.value
-      : null;
+      : '';
     this.mismatch = password === confirmPassword ? false : true;
   }
 

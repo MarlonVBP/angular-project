@@ -49,13 +49,13 @@ export class SignUpComponent {
     const passwordInput = document.getElementById(
       'password'
     ) as HTMLInputElement;
-    const password = passwordInput ? passwordInput.value : null;
+    const password = passwordInput ? passwordInput.value : '';
     const confirmPasswordInput = document.getElementById(
       'confirm-password'
     ) as HTMLInputElement;
     const confirmPassword = confirmPasswordInput
       ? confirmPasswordInput.value
-      : null;
+      : '';
     this.mismatch = password === confirmPassword ? false : true;
   }
 

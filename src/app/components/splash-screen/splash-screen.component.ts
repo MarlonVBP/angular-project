@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './splash-screen.component.html',
   styleUrl: './splash-screen.component.scss',
 })
-export class SplashScreenComponen implements OnInit {
+export class SplashScreenComponent implements OnInit {
   showSplash = true;
 
   ngOnInit(): void {
