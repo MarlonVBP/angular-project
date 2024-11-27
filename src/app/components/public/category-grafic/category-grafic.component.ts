@@ -1,5 +1,15 @@
 import { Component, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
-import { Chart, ChartData, ChartOptions } from 'chart.js';
+import {
+  Chart,
+  ChartData,
+  ChartOptions,
+  DoughnutController,
+  ArcElement,
+  Tooltip,
+  Legend,
+} from 'chart.js';
+
+Chart.register(DoughnutController, ArcElement, Tooltip, Legend);
 
 @Component({
   selector: 'app-category-grafic',
@@ -17,11 +27,31 @@ export class CategoryGraficComponent implements AfterViewInit {
   }
 
   private initChart(): void {
-    const data: ChartData<'doughnut'> = {
-      labels: ['Categoria 1', 'Categoria 2', 'Categoria 3', 'Categoria 4'],
+    // Retrieve categoriasPreferidas from localStorage and parse it
+    const categoriasPreferidas = JSON.parse(
+      localStorage.getItem('categoriasPreferidas') || '[]'
+    );
+
+    // If there's no data in localStorage, use default values
+    if (!categoriasPreferidas || categoriasPreferidas.length === 0) {
+      console.warn(
+        'No categoriasPreferidas found in localStorage. Using default values.'
+      );
+      categoriasPreferidas.push(
+        { categoria: 'Doces', frequencia: 20 },
+        { categoria: 'Salgados', frequencia: 30 }
+      );
+    }
+
+    // Extract categories and frequencies from the categoriasPreferidas array
+    const labels = categoriasPreferidas.map((item: any) => item.categoria);
+    const data = categoriasPreferidas.map((item: any) => item.frequencia);
+
+    const chartData: ChartData<'doughnut'> = {
+      labels: labels,
       datasets: [
         {
-          data: [25, 30, 20, 25], // Substitua por dados dinâmicos ou externos
+          data: data,
           backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0'],
           hoverBackgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0'],
         },
@@ -32,14 +62,14 @@ export class CategoryGraficComponent implements AfterViewInit {
       responsive: true,
       plugins: {
         legend: {
-          position: 'top',
+          position: 'bottom',
         },
       },
     };
 
     this.chart = new Chart(this.chartCanvas.nativeElement, {
       type: 'doughnut',
-      data: data,
+      data: chartData,
       options: options,
     });
   }

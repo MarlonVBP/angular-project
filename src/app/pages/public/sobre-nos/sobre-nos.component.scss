@@ -6,6 +6,8 @@
   width: 100%;
   height: calc(100vh - 160px);
   padding: 20px;
+  max-height: calc(100vh - 160px);
+  overflow: auto;
 
   .ola-mundo {
     font-size: 2em;
@@ -23,5 +25,11 @@
   h2 {
     font-size: 1.8em;
     margin: 20px 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding-top: 120px !important;
   }
 }

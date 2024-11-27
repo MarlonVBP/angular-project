@@ -90,9 +90,54 @@ export class HomeComponent implements OnInit {
   showInput(recipe: any) {
     this.selectedRecipe = recipe;
     this.isModalOpen = true;
+
+    this.registarEscolha(recipe.strCategory);
   }
 
   handleModalClose(isOpen: boolean) {
     this.isModalOpen = isOpen;
+  }
+
+  categoriasPreferidas: any = [];
+
+  registarEscolha(recipe: Receita) {
+    if (!localStorage.getItem('categoriasPreferidas')) {
+      this.categoriasPreferidas = [
+        {
+          categoria: recipe,
+          frequencia: 1,
+        },
+      ];
+
+      localStorage.setItem(
+        'categoriasPreferidas',
+        JSON.stringify(this.categoriasPreferidas)
+      );
+    } else {
+      this.categoriasPreferidas = JSON.parse(
+        localStorage.getItem('categoriasPreferidas')!
+      );
+
+      const categoriaExistente = this.categoriasPreferidas.find(
+        (item: any) => item.categoria === recipe
+      );
+
+      if (categoriaExistente) {
+        // Incrementa a frequência se a categoria já existir
+        categoriaExistente.frequencia += 1;
+      } else {
+        // Adiciona uma nova categoria com frequência inicial de 1
+        this.categoriasPreferidas.push({
+          categoria: recipe,
+          frequencia: 1,
+        });
+      }
+
+      // Atualiza o localStorage com o array modificado
+      localStorage.setItem(
+        'categoriasPreferidas',
+        JSON.stringify(this.categoriasPreferidas)
+      );
+    }
   }
 }
